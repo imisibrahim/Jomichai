@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jomichai | সরাসরি মালিকের জমি, দালালমুক্ত বাংলাদেশ</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FFCC00; /* Premium Yellow */
+            --bg-dark: #121212; /* Deep Black */
+            --bg-surface: #1E1E1E; /* Matte Black */
+            --text-light: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --border-color: #333333;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--bg-surface);
+            border-bottom: 2px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary);
+        }
+
+        .btn-add {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn-add:hover {
+            transform: scale(1.05);
+            background-color: #e6b800;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.95)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1932&auto=format&fit=crop') no-repeat center center/cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            background: var(--bg-surface);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-container input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-container input:focus {
+            outline: none;
+        }
+
+        .search-container button {
+            background: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            color: var(--bg-dark);
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Main Content System (Tabs) */
+        .page-tab {
+            display: none; /* Hidden by default */
+        }
+
+        .page-tab.active-tab {
+            display: block; /* Show active tab */
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        /* Listings Grid */
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Property Card */
+        .card {
+            background-color: var(--bg-surface);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .card-img-container {
+            position: relative;
+            height: 220px;
+            background: #2a2a2a;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .badge-owner {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            padding: 5px 12px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-verified {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #00cc66;
+            color: white;
+            padding: 5px 12px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-location {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+
+        .tag.no-road {
+            background: rgba(255, 51, 51, 0.1);
+            color: #ff3333;
+            border: 1px solid rgba(255, 51, 51, 0.2);
+        }
+
+        .btn-visit {
+            display: block;
+            text-align: center;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-visit:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background-color: var(--bg-surface);
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .why-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background: var(--bg-dark);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-box h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        /* Pricing Page Styles (Inside Sell Tab) */
+        .pricing-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .price-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .price-card.premium {
+            border: 2px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.1);
+        }
+
+        .hot-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--bg-dark);
+            padding: 4px 15px;
+            font-weight: 700;
+            font-size: 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .price-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .price-amount {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 35px;
+        }
+
+        .price-features li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #d0d0d0;
+        }
+
+        .price-features li::before {
+            content: "✓ ";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Comparison Table Styles */
+        .comparison-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background-color: var(--bg-surface);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comp-table th, .comp-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comp-table th {
+            background-color: #252525;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .comp-table td strong {
+            color: var(--primary);
+        }
+
+        /* Pop-up Modal CSS */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--bg-surface);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--text-muted);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .modal-body strong {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .search-container {
+                flex-direction: column;
+                gap: 10px;
+                background: transparent;
+                border: none;
+                padding: 0;
+            }
+            .search-container input {
+                background: var(--bg-surface);
+                border-radius: 5px;
+                border: 1px solid var(--border-color);
+            }
+            .comp-table th, .comp-table td {
+                padding: 10px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="nav-container">
+            <a onclick="switchTab('homeTab')" class="logo">jomi<span>chai</span></a>
+            <ul class="nav-menu">
+                <li><a id="homeMenuLink" onclick="switchTab('homeTab')" class="active">হোম / জমি খুঁজুন</a></li>
+                <li><a onclick="openModal('aboutModal')">আমাদের সম্পর্কে</a></li>
+                <li><a onclick="openModal('contactModal')">যোগাযোগ</a></li>
+            </ul>
+            <!-- CHANGED: Clicking this now safely opens the dedicated Sell Page Tab -->
+            <a class="btn-add" onclick="switchTab('sellTab')">জমি বিক্রি করুন</a>
+        </div>
+    </header>
+
+    <!-- TAB 1: HOME PAGE (CLEAN LISTINGS ONLY) -->
+    <div id="homeTab" class="page-tab active-tab">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>দালাল ছাড়া সরাসরি <span>মালিকের জমি</span></h1>
+            <p>আমরা জমির ৯০% ঝামেলা এবং ফিল্ড ভিজিট নিজে সামলাই। কোনো হিডেন মিডিয়া বা দالاলি কমিশন নেই।</p>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="এলাকা বা জেলার নাম লিখুন (যেমন: চাঁদপুর, সাভার...)">
+                <button onclick="searchLand()">অনুসন্ধান</button>
+            </div>
+        </section>
+
+        <!-- Main Listings Section -->
+        <main class="main-container">
+            <h2 class="section-title">সরাসরি বিক্রির জন্য উপলব্ধ জমি সমূহ</h2>
+            
+            <div class="listings-grid" id="listingsGrid">
+                
+                <!-- Demo Plot 1 -->
+                <div class="card" data-location="চাঁদপুর">
+                    <div class="card-img-container">
+                        <span class="badge-owner">সরাসরি মালিক</span>
+                        <span class="badge-verified">কাগজ সলিড</span>
+                        <img class="card-img" src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=400" alt="Land Image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">৳ ৪,৫০,০০০ / শতাংশ</div>
+                        <h3 class="card-title">মেরিন একাডেমির কাছে ইনভেস্টমেন্ট প্লট</h3>
+                        <div class="card-location">📍 গাছতলা-মেরিন একাডেমি রোড, চাঁদপুর</div>
+                        <div class="card-tags">
+                            <span class="tag">৬ শতাংশ</span>
+                            <span class="tag no-road">রাстая ছাড়া (বিলের জমি)</span>
+                            <span class="tag">ইনভেস্টমেন্ট জোন</span>
+                        </div>
+                        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="btn-visit">ফ্রি ফিল্ড ভিজিট বুক করুন</a>
+                    </div>
+                </div>
+
+                <!-- Demo Plot 2 -->
+                <div class="card" data-location="সাভার">
+                    <div class="card-img-container">
+                        <span class="badge-owner">সরাসরি মালিক</span>
+                        <span class="badge-verified">Soil Test রেডি</span>
+                        <img class="card-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=400" alt="Land Image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">৳ ৮,০০,০০০ / কাঠা</div>
+                        <h3 class="card-title">ভাকুর্তা নিচু বাউন্ডারি করা রেডি প্লট</h3>
+                        <div class="card-location">📍 ভাকুর্তা, সাভার, ঢাকা</div>
+                        <div class="card-tags">
+                            <span class="tag">১০ কাঠা</span>
+                            <span class="tag">১২ ফিট রাস্তা</span>
+                            <span class="tag">বাউন্ডারি কমপ্লিট</span>
+                        </div>
+                        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="btn-visit">ফ্রি ফিল্ড ভিজিট বুক করুন</a>
+                    </div>
+                </div>
+
+                <!-- Demo Plot 3 -->
+                <div class="card" data-location="পূর্বাচল">
+                    <div class="card-img-container">
+                        <span class="badge-owner">সরাসরি মালিক</span>
+                        <span class="badge-verified">প্ল্যান পাস</span>
+                        <img class="card-img" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=400" alt="Land Image">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-price">৳ ১২,৫০,০০০ / কাঠা</div>
+                        <h3 class="card-title">৩০০ ফিট মেইন রোডের কাছে প্রিমিয়াম প্রজেক্ট</h3>
+                        <div class="card-location">📍 সেক্টর ৪ এর পাশে, পূর্বাচল পেরিফেরি</div>
+                        <div class="card-tags">
+                            <span class="tag">৫ কাঠা</span>
+                            <span class="tag">২০ ফিট সরকারি রাস্তা</span>
+                            <span class="tag">৫ তলা প্ল্যান পাস</span>
+                        </div>
+                        <a href="https://wa.me/8801XXXXXXXXX" target="_blank" class="btn-visit">ফ্রি ফিল্ড ভিজিট বুক করুন</a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Why Us Section -->
+        <section class="why-us">
+            <div class="why-us-container">
+                <h2 class="section-title">কেন আমরা প্রচলিত দالاলি ব্যবস্থার বাইরে?</h2>
+                <div class="features">
+                    <div class="feature-box">
+                        <h3>১. মালিকের কষ্ট আমাদের</h3>
+                        <p>জমির ক্রেতা খোঁজা থেকে শুরু করে ক্রেতাকে মাঠে গিয়ে জমি দেখানোর সম্পূর্ণ কায়িক পরিশ্রম আমরা সামলাই। মালিক তার নিজের কাজ নিয়ে ব্যস্ত থাকবেন।</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>২. শূন্য শতাংশ দالاলি</h3>
+                        <p>আমরা জমির দাম বাড়িয়ে বা বায়ার-সেলারকে অন্ধকারে রেখে কোনো গোপন কমিশন খাই না। আমাদের সিস্টেম একদম স্বচ্ছ ও ওপেন।</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>৩. সম্পূর্ণ সত্যের ওপর লিস্টিং</h3>
+                        <p>জমিতে রাস্তা না থাকলে বা নিচু জমি হলে, সেটি আমরা পরিষ্কারভাবে বিজ্ঞাপনে উল্লেখ করি। ক্রেতা জেনেশুনেই সিদ্ধান্ত নেবেন, কোনো ধোঁকা নেই।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- TAB 2: DEDICATED SELL PAGE (PRICING & PLANS ONLY) -->
+    <div id="sellTab" class="page-tab">
+        <!-- Pricing Packages Section -->
+        <section class="pricing-section">
+            <h2 class="section-title" style="margin-top: 40px;">আমাদের জমিসেবাপূর্ণ প্যাকেজ সমূহ</h2>
+            <p style="color: var(--text-muted); margin-top: -20px; margin-bottom: 30px;">আপনার সুবিধাজনক প্ল্যানটি বেছে নিন এবং দালালের ঝামেলা ছাড়াই জমি বিক্রি করুন।</p>
+            
+            <div class="pricing-grid">
+                <!-- Basic Pack -->
+                <div class="price-card">
+                    <h3>বাজেট/অনলাইন প্যাক</h3>
+                    <div class="price-amount">৳ ১৫০</div>
+                    <ul class="price-features">
+                        <li>সম্পূর্ণ ১৫০ টাকা ফেসবুক বিজ্ঞাপনে খরচ</li>
+                        <li>অনলাইন চ্যাটিং ও বায়ার ফিল্টারিং আমাদের দায়িত্ব</li>
+                        <li>জমির একটি চমৎকার তথ্যবহুল ভিডিও মেকিং</li>
+                        <li>ফোন কল ও জমি দেখানোর দায়িত্ব মালিকের নিজের</li>
+                    </ul>
+                    <!-- CHANGED: Opens contact information popup directly -->
+                    <a class="btn-visit" onclick="openModal('contactModal')">এই প্ল্যানটি নিন</a>
+                </div>
+
+                <!-- Premium Pack -->
+                <div class="price-card premium">
+                    <div class="hot-tag">সবচেয়ে জনপ্রিয়</div>
+                    <h3>হ্যান্ডস-ফ্রি / প্রিমিয়াম প্যাক</h3>
+                    <div class="price-amount">৳ ১২০০</div>
+                    <ul class="price-features">
+                        <li>৳ ৪০০ সরাসরি ফেসবুক বিজ্ঞাপনে বুস্টিং</li>
+                        <li>জমির প্রফেশনাল ভিডিও ও ৩ডি ডিজাইন সাপোর্ট</li>
+                        <li>অনলাইনের সব কাস্টমার আমরা হ্যান্ডেল করব</li>
+                        <li><strong>মাঠে কাস্টমার নিয়ে জমি দেখানোর দায়িত্ব আমাদের</strong></li>
+                        <li>মালিক শুধু রেজিস্ট্রি বা ফাইনাল ডিলে আসবেন</li>
+                    </ul>
+                    <!-- CHANGED: Opens contact information popup directly -->
+                    <a class="btn-visit" style="background-color: var(--primary); color: var(--bg-dark);" onclick="openModal('contactModal')">এই প্ল্যানটি নিন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <h2 class="section-title">কেন আমরা Bikroy বা Marketplace থেকে আলাদা?</h2>
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>ফিচার সমূহ</th>
+                        <th>Bikroy / Marketplace</th>
+                        <th>jomichai (আমাদের সিস্টেম)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>কাস্টমার ফিল্টারিং</strong></td>
+                        <td>শত শত দালালের ফোন রিসিভ করে বিরক্ত হতে হয়।</td>
+                        <td>সব কল আমরা রিসিভ করে শুধু আসল বায়ারকে আপনার কাছে আনব।</td>
+                    </tr>
+                    <tr>
+                        <td><strong>মাঠে জমি দেখানো</strong></td>
+                        <td>মালিককে নিজের কাজ ফেলে বারবার স্পটে দৌড়াতে হয়।</td>
+                        <td><strong>১২০০ টাকার প্যাকেজে ক্রেতাকে স্পটে নিয়ে জমি দেখানোর সম্পূর্ণ দায়িত্ব আমাদের।</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ভিডিও ও ব্রান্ডিং</strong></td>
+                        <td>শুধু নরমাল ছবি আপলোড করা যায়।</td>
+                        <td>আমরা জমির আকর্ষণীয় ভিডিও বানিয়ে হাইলাইট করে প্রমোট করি।</td>
+                    </tr>
+                    <tr>
+                        <td><strong>গোপন কমিশন</strong></td>
+                        <td>দালালেরা লাখ টাকা পর্যন্ত গোপন কমিশন বা মিডিয়া চার্জ খায়।</td>
+                        <td><strong>০% গোপন কমিশন।</strong> শুধু প্যাকেজ চার্জ, বাকি সব স্বচ্ছ।</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+
+    <!-- SYSTEM 1: CONTACT POP-UP BOX (MODAL) -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+            <div class="modal-title">আমাদের সাথে যোগাযোগ করুন</div>
+            <div class="modal-body">
+                <p><strong>📞 মোবাইল নম্বর:</strong> +৮৮০১XXXXXXXXX (সকাল ৯টা - রাত ৯টা)</p>
+                <p><strong>💬 হোয়াটসঅ্যাপ:</strong> +৮৮০১XXXXXXXXX</p>
+                <p><strong>📧 ইমেইল:</strong> support@jomichai.com</p>
+                <p><strong>📍 অফিস:</strong> চাঁদপুর সদর, চাঁদপুর, বাংলাদেশ।</p>
+                <p style="color: var(--primary); font-size: 14px; margin-top: 20px;">*আপনি জমি কিনতে চান বা বিক্রি করতে চান, আমাদের সরাসরি কল করতে পারেন। আমরাই সব ফিল্ড ভিজিট হ্যান্ডেল করব।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SYSTEM 2: ABOUT US POP-UP BOX (MODAL) -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+            <div class="modal-title">jomichai সম্পর্কে কিছু কথা</div>
+            <div class="modal-body">
+                <p><strong>jomichai</strong> কোনো চিরাচরিত দালালি মাধ্যম বা সিন্ডিকেট নয়। এটি জমি কেনা-বেচার একটি আধুনিক এবং সম্পূর্ণ স্বচ্ছ প্ল্যাটফর্ম।</p>
+                <p>আমরা নিজেরা বাস্তব অভিজ্ঞতা থেকে দেখেছি, একটি জমি বিক্রি করতে গিয়ে মালিকদের কতটা সময়, অর্থ এবং মানসিক শক্তির অপচয় হয়। কাস্টমারদের জমি দেখাতে দেখাতেই দিন পার হয়ে যায়।</p>
+                <p>আমাদের মূল লক্ষ্য হলো—<strong>জমির ওনারদের ৯০% কষ্ট আমরা নিজেরা কাঁধে নেব।</strong> আমরা ক্রেতাদের ফিল্ডে নিয়ে জমি দেখাবো, আর ওনাররা থাকবেন একদম নিশ্চিন্ত। কোনো লুপ বা হিডেন কমিশন ছাড়া, সরাসরি বায়ার-সেলার ডিল সম্পন্ন করাই আমাদের একমাত্র উদ্দেশ্য।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span>jomichai</span>. সর্বস্বত্ব সংরক্ষিত। তৈরি করেছেন একজন গর্বিত ল্যান্ড ওনার।</p>
+    </footer>
+
+    <!-- JavaScript For Page Switching & Modals -->
+    <script>
+        // NEW: Function to switch between Home and Sell Packages Tabs smoothly
+        function switchTab(tabId) {
+            // Hide all tabs
+            let tabs = document.getElementsByClassName('page-tab');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active-tab');
+            }
+            
+            // Show target tab
+            document.getElementById(tabId).classList.add('active-tab');
+            
+            // Toggle active menu look
+            let homeMenu = document.getElementById('homeMenuLink');
+            if (tabId === 'homeTab') {
+                homeMenu.classList.add('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                homeMenu.classList.remove('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        }
+
+        // Open Modal Function
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        // Close Modal Function
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Close Modal if user clicks outside the box
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+            }
+        }
+
+        // Search System
+        function searchLand() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let location = cards[i].getAttribute('data-location').toLowerCase();
+                if (location.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
