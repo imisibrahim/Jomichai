@@ -16,8 +16,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Variables Grid supporting Light and Dark Systems */
         :root {
-            --bg-premium: #00000;
+            --bg-premium: #060609;
             --surface-premium: #111116;
             --surface-card: #16161F;
             --accent-gold: #D4AF37;
@@ -27,6 +28,20 @@
             --border-subtle: rgba(255, 255, 255, 0.05);
             --border-gold: rgba(214, 175, 55, 0.2);
             --tag-emergency: #EF4444;
+            --hero-gradient: radial-gradient(circle at top, rgba(214, 175, 55, 0.04) 0%, transparent 60%);
+        }
+
+        [data-theme="light"] {
+            --bg-premium: #F8F9FA;
+            --surface-premium: #FFFFFF;
+            --surface-card: #FFFFFF;
+            --accent-gold: #B38F1D;
+            --accent-gold-hover: #947413;
+            --text-main: #1A1A1E;
+            --text-muted: #64646F;
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-gold: rgba(179, 143, 29, 0.3);
+            --hero-gradient: radial-gradient(circle at top, rgba(179, 143, 29, 0.05) 0%, transparent 60%);
         }
 
         body {
@@ -34,6 +49,7 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Rich Navigation */
@@ -41,10 +57,16 @@
             background: rgba(6, 6, 9, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        [data-theme="light"] header {
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .nav-container {
@@ -54,6 +76,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 18px 20px;
+        }
+
+        .nav-right-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .logo {
@@ -89,6 +117,27 @@
             color: var(--accent-gold);
         }
 
+        /* Premium Theme Controller Button */
+        .btn-theme-toggle {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            padding: 10px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-theme-toggle:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
         .btn-list-property {
             border: 1px solid var(--accent-gold);
             background: transparent;
@@ -108,6 +157,10 @@
             box-shadow: 0 4px 20px rgba(214, 175, 55, 0.15);
         }
 
+        [data-theme="light"] .btn-list-property:hover {
+            color: #FFF;
+        }
+
         /* Dynamic Section System */
         .view-section {
             display: none;
@@ -123,7 +176,7 @@
         .hero {
             padding: 90px 20px 60px;
             text-align: center;
-            background: radial-gradient(circle at top, rgba(214, 175, 55, 0.04) 0%, transparent 60%);
+            background: var(--hero-gradient);
         }
 
         .hero h1 {
@@ -153,7 +206,11 @@
             padding: 6px;
             border-radius: 6px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        [data-theme="light"] .search-wrapper {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .search-wrapper input {
@@ -161,7 +218,7 @@
             background: transparent;
             border: none;
             padding: 12px 18px;
-            color: white;
+            color: var(--text-main);
             font-size: 15px;
         }
 
@@ -179,6 +236,10 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background 0.2s;
+        }
+
+        [data-theme="light"] .search-wrapper button {
+            color: #FFF;
         }
 
         .search-wrapper button:hover {
@@ -220,7 +281,11 @@
         .property-card:hover {
             transform: translateY(-4px);
             border-color: var(--border-gold);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        [data-theme="light"] .property-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
         }
 
         .property-thumb {
@@ -241,8 +306,8 @@
             top: 15px;
             left: 15px;
             background: rgba(6, 6, 9, 0.8);
-            color: var(--accent-gold);
-            border: 1px solid var(--border-gold);
+            color: #D4AF37;
+            border: 1px solid rgba(214, 175, 55, 0.3);
             padding: 5px 12px;
             font-weight: 500;
             font-size: 11px;
@@ -302,11 +367,15 @@
 
         .spec-pill {
             background: rgba(255, 255, 255, 0.03);
-            color: #E4E4E7;
+            color: var(--text-main);
             padding: 5px 10px;
             border-radius: 4px;
             font-size: 12px;
             border: 1px solid var(--border-subtle);
+        }
+
+        [data-theme="light"] .spec-pill {
+            background: rgba(0, 0, 0, 0.02);
         }
 
         .btn-view-details {
@@ -323,6 +392,10 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.2s;
+        }
+
+        [data-theme="light"] .btn-view-details {
+            background: rgba(0, 0, 0, 0.01);
         }
 
         .property-card:hover .btn-view-details {
@@ -452,6 +525,10 @@
             margin-bottom: 35px;
         }
 
+        [data-theme="light"] .system-note-container {
+            background: linear-gradient(135deg, rgba(179, 143, 29, 0.03) 0%, rgba(0,0,0,0) 100%);
+        }
+
         .system-note-container h4 {
             color: var(--accent-gold);
             font-size: 15px;
@@ -461,7 +538,7 @@
 
         .system-note-container p {
             font-size: 14px;
-            color: #E4E4E7;
+            color: var(--text-main);
             line-height: 1.7;
             font-weight: 300;
         }
@@ -477,6 +554,10 @@
             text-decoration: none;
             cursor: pointer;
             transition: background 0.2s;
+        }
+
+        [data-theme="light"] .btn-connect-owner {
+            color: #FFF;
         }
 
         .btn-connect-owner:hover {
@@ -502,7 +583,7 @@
         }
 
         /* ==========================================================================
-           VIEW 3: MINIMAL LISTING PAGE (GOOGLE FORM + DIRECT CONTACT)
+           VIEW 3: MINIMAL LISTING PAGE
            ========================================================================== */
         .listing-minimal-wrapper {
             max-width: 650px;
@@ -569,6 +650,10 @@
             transition: background 0.2s;
         }
 
+        [data-theme="light"] .btn-premium-action {
+            color: #FFF;
+        }
+
         .btn-premium-action:hover {
             background: var(--accent-gold-hover);
         }
@@ -608,7 +693,7 @@
         }
 
         .about-content p {
-            color: #E4E4E7;
+            color: var(--text-main);
             font-size: 15px;
             line-height: 1.8;
             margin-bottom: 20px;
@@ -616,7 +701,7 @@
         }
 
         /* ==========================================================================
-           VIEW 5: CONTACT PAGE (RICH PREVIOUS STYLE - FIXED DETAILS)
+           VIEW 5: CONTACT PAGE
            ========================================================================== */
         .contact-wrapper {
             max-width: 600px;
@@ -691,6 +776,10 @@
             transition: background 0.2s;
         }
 
+        [data-theme="light"] .btn-full-contact {
+            color: #FFF;
+        }
+
         .btn-full-contact:hover {
             background: var(--accent-gold-hover);
         }
@@ -703,6 +792,12 @@
             color: #52525B;
             border-top: 1px solid var(--border-subtle);
             font-size: 13px;
+            transition: background-color 0.3s;
+        }
+
+        [data-theme="light"] footer {
+            background: #E4E4E7;
+            color: #71717A;
         }
 
         footer span {
@@ -718,6 +813,10 @@
             }
             .nav-menu {
                 gap: 20px;
+            }
+            .nav-right-block {
+                width: 100%;
+                justify-content: center;
             }
             .hero h1 {
                 font-size: 30px;
@@ -746,7 +845,10 @@
                 <li><a id="menuAbout" onclick="navigateTo('aboutView')">আমাদের সম্পর্কে</a></li>
                 <li><a id="menuContact" onclick="navigateTo('contactView')">যোগাযোগ</a></li>
             </ul>
-            <a class="btn-list-property" onclick="navigateTo('submitView')">প্রপার্টি লিস্ট করুন</a>
+            <div class="nav-right-block">
+                <button class="btn-theme-toggle" onclick="toggleTheme()" id="themeToggleBtn">☀️ Light Mode</button>
+                <a class="btn-list-property" onclick="navigateTo('submitView')">প্রপার্টি লিস্ট করুন</a>
+            </div>
         </div>
     </header>
 
@@ -774,7 +876,7 @@
                     </div>
                     <div class="property-details">
                         <div class="property-value">৳ ৩,০০,০০০ / শতাংশ</div>
-                        <h4 class="property-name">তরপুরচণ্ডী মিজি বাড়ি মসজিদ সংলগ্ন রাস্তার পাশের ভিটা সহ বিশাল জমি</h4>
+                        <h4 class="property-name">তরপুরচণ্ডী miজি বাড়ি মসজিদ সংলগ্ন রাস্তার পাশের ভিটা সহ বিশাল জমি</h4>
                         <div class="property-zone">📍 তরপুরচণ্ডী, চাঁদপুর সদর</div>
                         <div class="property-specs">
                             <span class="spec-pill">৬০ শতাংশ</span>
@@ -889,7 +991,7 @@
         </div>
     </div>
 
-    <!-- VIEW 5: CONTACT PAGE (RICH PREVIOUS STYLE - FIXED REAL DATA) -->
+    <!-- VIEW 5: CONTACT PAGE -->
     <div id="contactView" class="view-section">
         <div class="contact-wrapper">
             <h2>যোগাযোগ ও হেল্পডেস্ক</h2>
@@ -925,7 +1027,21 @@
 
     <!-- Functional JavaScript Engine -->
     <script>
-        // Real User Database Core (100% Updated)
+        // Theme Toggle Engine
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const themeBtn = document.getElementById('themeToggleBtn');
+            
+            if (currentTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                themeBtn.innerHTML = '☀️ Light Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeBtn.innerHTML = '🌙 Dark Mode';
+            }
+        }
+
+        // Real User Database Core
         const propertyDatabase = {
             1: {
                 title: "তরপুরচণ্ডী মিজি বাড়ি মসজিদ সংলগ্ন রাস্তার পাশের ভিটা সহ বিশাল জমি",
@@ -946,7 +1062,7 @@
                 size: "১.৩ শতাংশ",
                 papers: "মালিকানা শতভাগ ফ্রেশ ও নিষ্কণ্টক। সরাসরি মূল মালিকের সাথে ডিল করার সুবিধা।",
                 road: "বর্ডার পুল অঞ্চলের সংযোগ সড়কের অত্যন্ত নিকটবর্তী এবং কৌশলগত অবস্থান।",
-                note: "হাইমচর উপজেলার অত্যন্ত ডিনন্দিং দক্ষিণ আলগী বর্ডার পুল জোনের এই প্লটটি আকারে ছোট হলেও এর বাণিজ্যিক ও ব্যবসায়িক গুরুত্ব অপরিসীম। দোকানপাট, বাণিজ্যিক শোরুম বা ছোট অফিস স্থাপনের জন্য এটি অত্যন্ত চমৎকার এবং লাভজনক একটি স্ট্র্যাটেজিক ইনভেস্টমেন্ট ডিল।",
+                note: "হাইমচর উপজেলার অত্যন্ত ডিমান্ডিং দক্ষিণ আলগী বর্ডার পুল জোনের এই প্লটটি আকারে ছোট হলেও এর বাণিজ্যিক ও ব্যবসায়িক গুরুত্ব অপরিসীম। দোকানপাট, বাণিজ্যিক শোরুম বা ছোট অফিস স্থাপনের জন্য এটি অত্যন্ত চমৎকার এবং লাভজনক একটি স্ট্র্যাটেজিক ইনভেস্টমেন্ট ডিল।",
                 phone: "01611702897",
                 img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600",
                 hasKhatian: false
@@ -1091,7 +1207,7 @@
 
                     <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 6px; border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
                         <span style="font-size: 11px; color: var(--accent-gold); text-transform: uppercase; font-weight: 600;">সরাসরি ডিল করার জন্য লিস্টিং ওনারের নাম্বার:</span>
-                        <span style="font-size: 22px; font-weight: 700; color: #fff; letter-spacing: 0.5px;">📞 ${asset.phone}</span>
+                        <span style="font-size: 22px; font-weight: 700; color: var(--text-main); letter-spacing: 0.5px;">📞 ${asset.phone}</span>
                         <a href="tel:${asset.phone}" class="btn-connect-owner" style="margin-top: 5px; text-align: center;">সরাসরি কল দিন</a>
                     </div>
                 </div>
