@@ -836,7 +836,6 @@
 </head>
 <body>
 
-    <!-- Header Architecture -->
     <header>
         <div class="nav-container">
             <a onclick="navigateTo('homeView')" class="logo">jomi<span>chai</span></a>
@@ -852,113 +851,35 @@
         </div>
     </header>
 
-    <!-- VIEW 1: HOME PAGE PORTFOLIO -->
     <div id="homeView" class="view-section active-view">
         <section class="hero">
             <h1>খুঁজে নিন আপনার পরবর্তী <span>প্রপার্টি অ্যাসেট</span></h1>
             <p>কোনো মধ্যস্থতাকারী বা কমিশন ছাড়াই সরাসরি প্রকৃত স্বত্বাধিকারীর সাথে শতভাগ স্বচ্ছতায় প্রপার্টি ডিল সম্পন্ন করুন।</p>
             <div class="search-wrapper">
-                <input type="text" id="areaSearchInput" placeholder="কাঙ্ক্ষিত এলাকা বা অঞ্চল লিখে অনুসন্ধান করুন (যেমন: চাঁদপুর, গাছতলা, তরপুরচণ্ডী...)">
+                <input type="text" id="areaSearchInput" placeholder="কাঙ্ক্ষিত এলাকা বা অঞ্চল লিখে অনুসন্ধান করুন (যেমন: চাঁদপুর, গাছতলা, জজকোর্ট...)">
                 <button onclick="filterPropertiesByArea()">অনুসন্ধান</button>
             </div>
         </section>
 
         <main class="main-content">
-            <h3 class="section-header">নির্বাচিত ভেরিফাইড ল্যান্ড পোর্টфোলিও</h3>
+            <h3 class="section-header">নির্বাচিত ভেরিফাইড ল্যান্ড পোর্টফোলিও</h3>
             <div class="portfolio-grid" id="propertiesContainer">
-                
-                <!-- Property 1 -->
-                <div class="property-card" data-location="তরপুরচণ্ডী">
-                    <div class="property-thumb">
-                        <span class="tag-direct">সরাসরি মালিকানা</span>
-                        <span class="tag-emergency">Emergency Sell</span>
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=400" alt="Asset">
-                    </div>
-                    <div class="property-details">
-                        <div class="property-value">৳ ৩,০০,০০০ / শতাংশ</div>
-                        <h4 class="property-name">তরপুরচণ্ডী miজি বাড়ি মসজিদ সংলগ্ন রাস্তার পাশের ভিটা সহ বিশাল জমি</h4>
-                        <div class="property-zone">📍 তরপুরচণ্ডী, চাঁদপুর সদর</div>
-                        <div class="property-specs">
-                            <span class="spec-pill">৬০ শতাংশ</span>
-                            <span class="spec-pill">রাস্তার সঙ্গে</span>
-                        </div>
-                        <button class="btn-view-details" onclick="showPropertyDetails(1)">সম্পূর্ণ লিস্টিং ও সরাসরি নাম্বার দেখুন</button>
-                    </div>
                 </div>
-
-                <!-- Property 2 -->
-                <div class="property-card" data-location="হাইমচর">
-                    <div class="property-thumb">
-                        <span class="tag-direct">সরাসরি মালিকানা</span>
-                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=400" alt="Asset">
-                    </div>
-                    <div class="property-details">
-                        <div class="property-value">৳ ১২,০০,০০০ / শতাংশ</div>
-                        <h4 class="property-name">দক্ষিণ আলগী বর্ডার পুল সংলগ্ন বাণিজ্যিক উপযোগিতা সম্পন্ন স্কয়ার প্লট</h4>
-                        <div class="property-zone">📍 দক্ষিণ আলগী বর্ডার পুল, হাইমচর</div>
-                        <div class="property-specs">
-                            <span class="spec-pill">১.৩ শতাংশ</span>
-                            <span class="spec-pill">বর্ডার পুল জোন</span>
-                        </div>
-                        <button class="btn-view-details" onclick="showPropertyDetails(2)">সম্পূর্ণ লিস্টিং ও সরাসরি নাম্বার দেখুন</button>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card" data-location="গাছতলা">
-                    <div class="property-thumb">
-                        <span class="tag-direct">সরাসরি মালিকানা</span>
-                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=401" alt="Asset">
-                    </div>
-                    <div class="property-details">
-                        <div class="property-value">৳ ১০,০০,০০০ / শতাংশ</div>
-                        <h4 class="property-name">গুনরাজদি মৌজা গাছতলা মেরিন একাডেমির পাশে চমৎকার ৫ শতকের রেডি প্লট</h4>
-                        <div class="property-zone">📍 গাছতলা মেরিন একাডেমির পাশে, চাঁদপুর</div>
-                        <div class="property-specs">
-                            <span class="spec-pill">৫০ শতাংশ মোট</span>
-                            <span class="spec-pill">৫ শতকের ৬টি প্লট</span>
-                        </div>
-                        <button class="btn-view-details" onclick="showPropertyDetails(3)">সম্পূর্ণ লিস্টিং ও সরাসরি নাম্বার দেখুন</button>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card" data-location="পাওয়ার হাউস">
-                    <div class="property-thumb">
-                        <span class="tag-direct">সরাসরি মালিকানা</span>
-                        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=401" alt="Asset">
-                    </div>
-                    <div class="property-details">
-                        <div class="property-value">৳ ১৫,০০,০০০ / শতাংশ</div>
-                        <h4 class="property-name">পাওয়ার হাউসের সাথে বালুরমাঠ সংলগ্ন নিষ্কণ্টক রেডি স্কয়ার প্লট</h4>
-                        <div class="property-zone">📍 পাওয়ার হাউস বালুরমাঠ, চাঁদপুর</div>
-                        <div class="property-specs">
-                            <span class="spec-pill">৪.৭৫ শতক</span>
-                            <span class="spec-pill">রাস্তা সংলগ্ন</span>
-                        </div>
-                        <button class="btn-view-details" onclick="showPropertyDetails(4)">সম্পূর্ণ লিস্টিং ও সরাসরি নাম্বার দেখুন</button>
-                    </div>
-                </div>
-
-            </div>
         </main>
     </div>
 
-    <!-- VIEW 2: PROPERTY DETAILS PAGE -->
     <div id="detailsView" class="view-section">
         <div class="detail-page-wrapper">
             <a class="btn-back" onclick="navigateTo('homeView')">← গ্যালারিতে ফিরে যান</a>
             <div class="detail-main-grid" id="dynamicDetailsContainer">
-                <!-- Loaded dynamically by JS -->
-            </div>
+                </div>
         </div>
     </div>
 
-    <!-- VIEW 3: MINIMAL LISTING PAGE -->
     <div id="submitView" class="view-section">
         <div class="listing-minimal-wrapper">
             <h2>আপনার প্রপার্টিটি লিস্ট করুন</h2>
-            <p>আমাদের নেটওয়ার্কে কোনো থার্ড পার্টি বা ব্রোকার ছাড়াই সরাসরি প্রকৃত ক্রেতাদের কাছে আপনার জমি বা প্রপার্টির বিবরণ পৌঁছে দিন</p>
+            <p>আমাদের নেটওয়ার্কে কোনো থার্ড পার্টি বা ব্রোকার ছাড়াই সরাসরি প্রকৃত ক্রেতাদের কাছে আপনার জমি বা প্রপার্টটির বিবরণ পৌঁছে দিন</p>
             
             <div class="action-card-grid">
                 <div class="action-card">
@@ -976,7 +897,6 @@
         </div>
     </div>
 
-    <!-- VIEW 4: ABOUT US PAGE -->
     <div id="aboutView" class="view-section">
         <div class="about-wrapper">
             <h2>আমাদের সম্পর্কে</h2>
@@ -991,7 +911,6 @@
         </div>
     </div>
 
-    <!-- VIEW 5: CONTACT PAGE -->
     <div id="contactView" class="view-section">
         <div class="contact-wrapper">
             <h2>যোগাযোগ ও হেল্পডেস্ক</h2>
@@ -1020,13 +939,16 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2026 <span>jomichai</span>. Engineered for Transparent High-Value Assets.</p>
     </footer>
 
-    <!-- Functional JavaScript Engine -->
     <script>
+        // DOM Loading Engine - Automatically randomizes and renders layout sequence upon load
+        document.addEventListener("DOMContentLoaded", () => {
+            renderAndShuffleProperties();
+        });
+
         // Theme Toggle Engine
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -1041,42 +963,48 @@
             }
         }
 
-        // Real User Database Core
+        // Core Property Database (Add, Edit or Remove properties cleanly here)
         const propertyDatabase = {
             1: {
                 title: "তরপুরচণ্ডী মিজি বাড়ি মসজিদ সংলগ্ন রাস্তার পাশের ভিটা সহ বিশাল জমি",
                 price: "৳ ৩,০০,০০০ / শতাংশ",
                 location: "📍 তরপুরচণ্ডী মিজি বাড়ি মসজিদ ও এতিমখানার অপোজিট সাইড, চাঁদপুর সদর",
+                zone: "তরপুরচণ্ডী",
                 size: "৬০ শতাংশ (ভিটা সহ)",
                 papers: "কাগজপত্র শতভাগ আপ-টু-ডেট (Uptodate), খাজনা সম্পূর্ণ পরিশোধ করা আছে।",
                 road: "সরাসরি প্রধান পিচ ঢালা রাস্তার সঙ্গে সংযুক্ত প্লট।",
                 note: "জরুরি টাকার প্রয়োজন (Emergency Need) থাকায় এই পৈত্রিক সম্পত্তিটি বাজার মূল্যের চেয়ে অনেক কম দামে সরাসরি প্রকৃত মালিকের পক্ষ থেকে বিক্রি করা হচ্ছে। এই অঞ্চলের আশেপাশের জমির বর্তমান বাজার মূল্য প্রতি শতাংশ প্রায় ৫ লাখ টাকা করে। সম্পত্তিটি সম্প্রতি সুনির্দিষ্টভাবে মেপে খুঁটি গেড়ে সীমানা নির্ধারণ করা সম্পন্ন হয়েছে। রেডি-টু-রজিস্ট্রি প্রপার্টি।",
                 phone: "01925296773",
                 img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600",
+                emergency: true,
                 hasKhatian: false
             },
             2: {
                 title: "দক্ষিণ আলগী বর্ডার পুল সংলগ্ন বাণিজ্যিক উপযোগিতা সম্পন্ন স্কয়ার প্লট",
                 price: "৳ ১২,০০,০০০ / শতাংশ",
                 location: "📍 দক্ষিণ আলগী বর্ডার পুল, হাইমচর উপজেলা, চাঁদপুর",
+                zone: "হাইমচর",
                 size: "১.৩ শতাংশ",
                 papers: "মালিকানা শতভাগ ফ্রেশ ও নিষ্কণ্টক। সরাসরি মূল মালিকের সাথে ডিল করার সুবিধা।",
                 road: "বর্ডার পুল অঞ্চলের সংযোগ সড়কের অত্যন্ত নিকটবর্তী এবং কৌশলগত অবস্থান।",
-                note: "হাইমচর উপজেলার অত্যন্ত ডিমান্ডিং দক্ষিণ আলগী বর্ডার পুল জোনের এই প্লটটি আকারে ছোট হলেও এর বাণিজ্যিক ও ব্যবসায়িক গুরুত্ব অপরিসীম। দোকানপাট, বাণিজ্যিক শোরুম বা ছোট অফিস স্থাপনের জন্য এটি অত্যন্ত চমৎকার এবং লাভজনক একটি স্ট্র্যাটেজিক ইনভেস্টমেন্ট ডিল।",
+                note: "হাইমচর উপজেলার অত্যন্ত ডিমান্ডিং দক্ষিণ আলগী বর্ডার পুল জোনের এই প্লটটি আকারে ছোট হলেও এর বাণিজ্যিক ও ব্যবসায়িক গুরুত্ব অপরিসীম। দোকানপাট, বাণিজ্যিক শোরুম বা ছোট office স্থাপনের জন্য এটি অত্যন্ত চমৎকার এবং লাভজনক একটি স্ট্র্যাটেজিক ইনভেস্টমেন্ট ডিল।",
                 phone: "01611702897",
                 img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=600",
+                emergency: false,
                 hasKhatian: false
             },
             3: {
                 title: "গুনরাজদি মৌজা গাছতলা মেরিন একাডেমির পাশে ৫ শতকের রেডি প্লট",
                 price: "৳ ১০,০০,০০০ / শতাংশ",
                 location: "📍 গুনরাজদি মৌজা, গাছতলা, মেরিন একাডেমিক এর পাশ দিয়ে, চাঁদপুর",
+                zone: "গাছতলা",
                 size: "মোট ৫০ শতাংশ (২০ শতাংশ রেজিস্ট্রি করা, ৩০ শতাংশ বাকি)",
                 papers: "সিএস, এসএ, বিএস খতিয়ান ও দাগ নম্বর সহ সমস্ত লিগ্যাল ডকুমেন্টেশন সম্পূর্ণ ভেরিফাইড।",
                 road: "মেরিন একাডেমির পাশ দিয়ে ভালো রোড কানেক্টিভিটি সুবিধা রয়েছে।",
                 note: "গুনরাজদি মৌজার এই বিশাল ৫০ শতাংশ জমিটিকে ৫ শতাংশের মোট ৬টি আকর্ষণীয় রেডি প্লটে বিন্যস্ত করা হয়েছে। ইতিমধ্যে ২০ শতাংশ জমির রেজিস্ট্রি সম্পন্ন হয়েছে এবং বাকি ৩০ শতাংশ হস্তান্তরের জন্য সম্পূর্ণ প্রস্তুত। খতিয়ান ও দাগ সুনির্দিষ্ট থাকায় প্রপার্টির লিগ্যাল ব্যাকগ্রাউন্ড অত্যন্ত শক্তিশালী। আবাসন প্রজেক্টের জন্য আদর্শ প্লট।",
                 phone: "01818657489",
                 img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=601",
+                emergency: false,
                 hasKhatian: true,
                 khatianData: [
                     {type: "সি এস (CS)", khatian: "২", dag: "৫২৮"},
@@ -1089,15 +1017,103 @@
                 title: "পাওয়ার হাউসের সাথে বালুরমাঠ সংলগ্ন নিষ্কণ্টক রেডি স্কয়ার প্লট",
                 price: "৳ ১৫,০০,০০০ / শতাংশ",
                 location: "📍 পাওয়ার হাউস সংলগ্ন, বালুরমাঠ, চাঁদপুর",
+                zone: "পাওয়ার হাউস",
                 size: "৪.৭৫ শতক",
                 papers: "খাজনা ও খারিজ (Mutation) সব নিখুঁতভাবে আপ-টু-ডেট করা আছে।",
                 road: "পাওয়ার হাউসের সাথে চমৎকার চওড়া ও সচল রাস্তা রয়েছে।",
                 note: "এই প্লটের মূল মালিক পক্ষ স্থায়ীভাবে ঢাকায় সেটেল্ড এবং সেখানে একটি বাড়ি ডেভেলপ করছেন। বিগত ২ বছরেও ওনারা চাঁদপুরে আসার সুযোগ পাননি এবং প্রপার্টিটি এভাবেই খালি পড়ে রয়েছে। ঢাকায় চলমান প্রজেক্টের ফাণ্ডিং নিশ্চিত করার উদ্দেশ্যেই তারা জরুরি ভিত্তিতে এই নিষ্কণ্টক জমিটি বিক্রি করে দিচ্ছেন। সরাসরি কথা বলার জন্য ওনার স্ত্রীর ভাইয়ের (শ্যালক) নাম্বার দেওয়া হলো।",
                 phone: "01707565720",
                 img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=601",
+                emergency: false,
+                hasKhatian: false
+            },
+            5: {
+                title: "জজকোর্ট জোন জি.টি রোড সংলগ্ন চতুরপাশে বাউন্ডারি দেয়ালসহ নির্ভেজাল প্লট (১ম প্লট)",
+                price: "৳ ১০,০০,০০০ (মোট মূল্য / আলোচনা সাপেক্ষ)",
+                location: "📍 জজকোর্ট এর সামনে দিয়ে উত্তরে, জি.টি রোড, চাঁদপুর",
+                zone: "জজকোর্ট",
+                size: "৬ শতাংশ (ফলের বাগান সংলগ্ন)",
+                papers: "সম্পূর্ণ নিষ্কণ্টক ও নির্ভেজাল নিজেদের নিজস্ব আবাসিক এলাকা।",
+                road: "১০ ফিট চওড়া নিজস্ব সংযোগ রাস্তা ও চমৎকার গেটেড বাউন্ডারি ব্যবস্থা।",
+                note: "মনোরম ও অত্যন্ত নিরাপদ কোয়াইট নিজস্ব আবাসিক এলাকার ভেতরের একটি প্রিমিয়াম স্কয়ার প্লট। প্লটের চতুরপাশে মজবুত বাউন্ডারি ওয়াল করা আছে। বিদ্যুৎ ও পানির সুবর্ণ সুবিধা বিদ্যমান। সামনে মেইন রাস্তার পাশেই রয়েছে ৬ শতাংশের একটি ফলের বাগান। সরাসরি মালিকের সাথে ফ্রেশ ডিলের দারুণ সুযোগ। জমি পছন্দ হলে দাম কিছুটা কমানোর সুযোগ রয়েছে।",
+                phone: "01849513215",
+                img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=602",
+                emergency: false,
+                hasKhatian: false
+            },
+            6: {
+                title: "জি.টি মেইন রোড সংলগ্ন বাণিজ্যিক ব্যবহারের উপযোগী দুটি রেডি দোকান স্পেস",
+                price: "দাম আলোচনায় নির্ধারিত হবে",
+                location: "📍 মেইন জি.টি রোড, জজকোর্ট জোন, চাঁদপুর",
+                zone: "জজকোর্ট",
+                size: "২টি দোকান স্পেস",
+                papers: "কাগজপত্র সম্পূর্ণ ফ্রেশ ও নিজেদের মালিকানাধীন সম্পত্তি।",
+                road: "সরাসরি মেইন পিচ ঢালা রাস্তার সাথে ফ্রন্টে সংযুক্ত।",
+                note: "ব্যবসায়িক বা বাণিজ্যিক বিনিয়োগের জন্য এই দোকান দুটি অত্যন্ত স্ট্র্যাটেজিক ও গুরুত্বপূর্ণ অবস্থানে রয়েছে। সরাসরি মেইন রাস্তার পাশে হওয়ায় যেকোনো শোরুম, ফার্মেসি বা কমার্শিয়াল আউটলেটের জন্য চমৎকার আয়ের উৎস হতে পারে। কোনো মিডিয়া ছাড়াই সরাসরি প্রকৃত ক্রেতারা যোগাযোগ করতে পারবেন।",
+                phone: "01849513215",
+                img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=602",
+                emergency: false,
+                hasKhatian: false
+            },
+            7: {
+                title: "জজকোর্ট জোন জি.টি রোড সংলগ্ন চতুরপাশে বাউন্ডারি দেয়ালসহ ফ্রেশ প্লট (২য় প্লট)",
+                price: "৳ ৭,০০,০০০ (মোট মূল্য / আলোচনা সাপেক্ষ)",
+                location: "📍 জজকোর্ট এর সামনে দিয়ে উত্তরে, জি.টি রোড, চাঁদপুর",
+                zone: "জজকোর্ট",
+                size: "৬ শতাংশ",
+                papers: "নিজেদের আবাসিক এলাকা, সম্পূর্ণ ক্লিয়ার লিগ্যাল ডকুমেন্টস।",
+                road: "১০ ফিট অভ্যন্তরীণ সুন্দর রাস্তা সুবিধা ও ইউটিলিটি কানেকশন।",
+                note: "একই মালিকের পূর্ববর্তী ফলের বাগান সংলগ্ন ১ম প্লটটি থেকে মাত্র ২ প্লট পরেই এই সুন্দর ৬ শতাংশের ২য় প্লটটি অবস্থিত। বাউন্ডারি দেয়াল ঘেরা, পানি ও বিদ্যুৎ সুবিধাযুক্ত নিষ্কণ্টক রেডি প্রপার্টি। অযথা ব্রোকার বা মিডিয়া ছাড়া সরাসরি ওনারের সাথে কথা বলে ক্লিয়ার ডিল করতে পারবেন। সরজমিনে জমি দেখে পছন্দ হলে অন-টেবিল অনার স্ক্রিপ্ট কিছুটা সম্মানসূচক দাম বিবেচনা করবেন।",
+                phone: "01849513215",
+                img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=603",
+                emergency: false,
                 hasKhatian: false
             }
         };
+
+        // Automated Card Render Engine with Built-in Fluid Randomizer
+        function renderAndShuffleProperties() {
+            const container = document.getElementById('propertiesContainer');
+            if (!container) return;
+            
+            container.innerHTML = ''; // Fresh clean render
+            const keys = Object.keys(propertyDatabase);
+            
+            // Premium Fisher-Yates Randomization Engine
+            for (let i = keys.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [keys[i], keys[j]] = [keys[j], keys[i]];
+            }
+            
+            // Loop and generate beautiful card UI components dynamically
+            keys.forEach(id => {
+                const item = propertyDatabase[id];
+                
+                const emergencyTag = item.emergency ? `<span class="tag-emergency">Emergency Sell</span>` : '';
+                const displayTitle = item.title.length > 72 ? item.title.substring(0, 70) + '...' : item.title;
+                
+                const cardHTML = `
+                    <div class="property-card" data-location="${item.zone}">
+                        <div class="property-thumb">
+                            <span class="tag-direct">সরাসরি মালিকানা</span>
+                            ${emergencyTag}
+                            <img src="${item.img}" alt="Asset Thumbnail">
+                        </div>
+                        <div class="property-details">
+                            <div class="property-value">${item.price}</div>
+                            <h4 class="property-name">${displayTitle}</h4>
+                            <div class="property-zone">${item.location.split(',')[0]}</div>
+                            <div class="property-specs">
+                                <span class="spec-pill">${item.size.split('(')[0]}</span>
+                                <span class="spec-pill">${item.road.includes('প্রধান') || item.road.includes('মেইন') || item.road.includes('রাস্তার') ? 'রাস্তা সংলগ্ন' : 'সংযোগ সড়ক'}</span>
+                            </div>
+                            <button class="btn-view-details" onclick="showPropertyDetails(${id})">সম্পূর্ণ লিস্টিং ও সরাসরি নাম্বার দেখুন</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
 
         // Tab and View Switcher Engine
         function navigateTo(viewId) {
