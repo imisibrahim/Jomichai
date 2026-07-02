@@ -435,14 +435,16 @@
             overflow: hidden;
         }
 
-        .detail-gallery {
-            height: 380px;
+        .detail-gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
             background: #000;
         }
 
-        .detail-gallery img {
+        .detail-gallery-item {
             width: 100%;
-            height: 100%;
+            height: 420px;
             object-fit: cover;
         }
 
@@ -828,8 +830,8 @@
             .detail-price-block {
                 text-align: left;
             }
-            .detail-gallery {
-                height: 240px;
+            .detail-gallery-item {
+                height: 260px;
             }
         }
     </style>
@@ -864,7 +866,7 @@
         </section>
 
         <main class="main-content">
-            <h3 class="section-header">নির্বাচিত ভেরিফাইড ল্যান্ড portfolio </h3>
+            <h3 class="section-header">নির্বাচিত ভেরিফাইড ল্যান্ড পোর্টфোলিও</h3>
             <div class="portfolio-grid" id="propertiesContainer">
                 <!-- JavaScript Engine dynamically renders and shuffles components here -->
             </div>
@@ -938,7 +940,7 @@
                     <p><a href="mailto:propertyhat@gmail.com">propertyhat@gmail.com</a></p>
                 </div>
                 <div class="info-card-premium">
-                    <label>হেডকোয়ার্টার লোকেশন</label>
+                    <label>हेडकोर्याटर लोकेशन</label>
                     <p>চাঁদপুর সদর, চাঁদপুর, বাংলাদেশ</p>
                 </div>
             </div>
@@ -985,7 +987,7 @@
                 road: "সরাসরি প্রধান পিচ ঢালা রাস্তার সঙ্গে সংযুক্ত প্লট।",
                 note: "জরুরি টাকার প্রয়োজন (Emergency Need) থাকায় এই পৈত্রিক সম্পত্তিটি বাজার মূল্যের চেয়ে অনেক কম দামে সরাসরি প্রকৃত মালিকের পক্ষ থেকে বিক্রি করা হচ্ছে। এই অঞ্চলের আশেপাশের জমির বর্তমান বাজার মূল্য প্রতি শতাংশ প্রায় ৫ লাখ টাকা করে। সম্পত্তিটি সম্প্রতি সুনির্দিষ্টভাবে মেপে খুঁটি গেড়ে সীমানা নির্ধারণ করা সম্পন্ন হয়েছে। রেডি-টু-রজিস্ট্রি প্রপার্টি।",
                 phone: "01925296773",
-                img: "FB_IMG_1782548829511.jpg",
+                images: ["FB_IMG_1782548829511.jpg"],
                 emergency: true,
                 hasKhatian: false
             },
@@ -995,11 +997,11 @@
                 location: "📍 দক্ষিণ আলগী বর্ডার পুল, হাইমচর উপজেলা, চাঁদপুর",
                 zone: "হাইমচর",
                 size: "১.৩ শতাংশ",
-                papers: "মালিকানা শতভাগ ফ্রেশ ও নিষ্কণ্টক। সরাসরি মূল মালিকের সাথে ডিল করার সুবিধা।",
+                papers: "مালিকানা শতভাগ ফ্রেশ ও নিষ্কণ্টক। সরাসরি মূল মালিকের সাথে ডিল করার সুবিধা।",
                 road: "বর্ডার পুল অঞ্চলের সংযোগ সড়কের অত্যন্ত নিকটবর্তী এবং কৌশলগত অবস্থান।",
                 note: "হাইমচর উপজেলার অত্যন্ত ডিমান্ডিং দক্ষিণ আলগী বর্ডার পুল জোনের এই প্লটটি আকারে ছোট হলেও এর বাণিজ্যিক ও ব্যবসায়িক গুরুত্ব অপরিসীম। দোকানপাট, বাণিজ্যিক শোরুম বা ছোট office স্থাপননের জন্য এটি অত্যন্ত চমৎকার এবং লাভজনক একটি স্ট্র্যাটেজিক ইনভেস্টমেন্ট ডিল।",
                 phone: "01611702897",
-                img: "FB_IMG_1782538678474.jpg",
+                images: ["FB_IMG_1782538678474.jpg"],
                 emergency: false,
                 hasKhatian: false
             },
@@ -1013,7 +1015,7 @@
                 road: "মেরিন একাডেমির পাশ দিয়ে ভালো রোড কানেক্টিভিটি সুবিধা রয়েছে।",
                 note: "গুনরাজদি মৌজার এই বিশাল ৫০ শতাংশ জমিটিকে ৫ শতাংশের মোট ৬টি আকর্ষণীয় রেডি প্লটে বিন্যস্ত করা হয়েছে। ইতিমধ্যে ২০ শতাংশ জমির রেজিস্ট্রি সম্পন্ন হয়েছে এবং বাকি ৩০ শতাংশ হস্তান্তরের জন্য সম্পূর্ণ প্রস্তুত। খতিয়ান ও দাগ সুনির্দিষ্ট থাকায় প্রপার্টির লিগ্যাল ব্যাকগ্রাউন্ড অত্যন্ত শক্তিশালী। আবাসন প্রজেক্টের জন্য আদর্শ প্লট।",
                 phone: "01818657489",
-                img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=601",
+                images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=601"],
                 emergency: false,
                 hasKhatian: true,
                 khatianData: [
@@ -1033,7 +1035,7 @@
                 road: "পাওয়ার হাউসের সাথে চমৎকার চওড়া ও সচল রাস্তা রয়েছে।",
                 note: "এই প্লটের মূল মালিক পক্ষ স্থায়ীভাবে ঢাকায় সেটেল্ড এবং সেখানে একটি বাড়ি ডেভেলপ করছেন। বিগত ২ বছরেও ওনারা চাঁদপুরে আসার সুযোগ পাননি এবং প্রপার্টিটি এভাবেই খালি পড়ে রয়েছে। ঢাকায় চলমান প্রজেক্টের ফাণ্ডিং নিশ্চিত করার উদ্দেশ্যেই তারা জরুরি ভিত্তিতে এই নিষ্কণ্টক জমিটি বিক্রি করে দিচ্ছেন। সরাসরি কথা বলার জন্য ওনার স্ত্রীর ভাইয়ের (শ্যালক) নাম্বার দেওয়া হলো।",
                 phone: "01707565720",
-                img: "FB_IMG_1782538321617.jpg",
+                images: ["FB_IMG_1782538321617.jpg"],
                 emergency: false,
                 hasKhatian: false
             },
@@ -1042,12 +1044,12 @@
                 price: "৳ ৯,০০,০০০ (ফিক্সড মূল্য)",
                 location: "📍 জজকোর্ট এর সামনে দিয়ে উত্তরে, জি.টি রোড, চাঁদপুর",
                 zone: "জজকোর্ট",
-                size: "৬ শতাংশ (सामने फलेर बागाना संलग्ना)",
+                size: "৬ শতাংশ (सामने फলের বাগানা সংলग्ना)",
                 papers: "সম্পূর্ণ নিষ্কণ্টক ও নির্ভেজাল নিজেদের নিজস্ব আবাসিক এলাকা।",
                 road: "১০ ফিট চওড়া নিজস্ব সংযোগ রাস্তা ও চমৎকার গেটেড বাউন্ডারি ব্যবস্থা।",
                 note: "💡 [গ্রাহকদের অবগতির জন্য: এই জোনের ৫, 六 এবং ৭ নম্বর প্রপার্টিগুলো একই মূল মালিকের নিজস্ব সম্পত্তি, তাই সবগুলোতে একই কন্টাক্ট নাম্বার দেওয়া হয়েছে]। মনোরম ও অত্যন্ত নিরাপদ কোয়াইট নিজস্ব আবাসিক এলাকার ভেতরের একটি প্রিমিয়াম স্কয়ার প্লট। প্লটের চতুরপাশে মজবুত বাউন্ডারি ওয়াল করা আছে। বিদ্যুৎ ও পানির সুবর্ণ সুবিধা বিদ্যমান। সামনে মেইন রাস্তার পাশেই রয়েছে ৬ শতাংশের একটি ফলের বাগান। সরাসরি মালিকের সাথে ফ্রেশ ডিল। কোনো মিডিয়া বা ব্রোকার নেই। দাম ৯ লাখ টাকা একদম ফিক্সড।",
                 phone: "01849513215",
-                img: "Messenger_creation_CFC313A9-F03F-4850-AB88-A8480461C7AA.jpeg",
+                images: ["Messenger_creation_CFC313A9-F03F-4850-AB88-A8480461C7AA.jpeg", "GIjGFVfbXcpjYWxWSwedHidrt0X.jpg"],
                 emergency: false,
                 hasKhatian: false
             },
@@ -1061,7 +1063,7 @@
                 road: "সরাসরি মেইন পিচ ঢালা রাস্তার সাথে ফ্রন্টে সংযুক্ত।",
                 note: "💡 [গ্রাহকদের অবগতির জন্য: এই জোনের ৫, ৬ এবং ৭ নম্বর প্রপার্টিগুলো একই মূল মালিকের নিজস্ব সম্পত্তি, তাই সবগুলোতে একই কন্টাক্ট নাম্বার দেওয়া হয়েছে]। ব্যবসায়িক বা বাণিজ্যিক বিনিয়োগের জন্য এই দোকান দুটি অত্যন্ত স্ট্র্যাটেজিক ও গুরুত্বপূর্ণ অবস্থানে রয়েছে। সরাসরি মেইন রাস্তার পাশে ৮৫ পয়েন্ট ভূমিসহ এটি বিক্রি করা হবে। যেকোনো লাভজনক শোরুম, ফার্মেসি বা বাণিজ্যিক আউটলেটের জন্য চমৎকার আয়ের উৎস হতে পারে। কোনো মিডিয়া ছাড়াই সরাসরি প্রকৃত ক্রেতারা যোগাযোগ করতে পারবেন। দাম ১৫ লাখ টাকা ফিক্সড।",
                 phone: "01849513215",
-                img: "Messenger_creation_FDF67350-7954-4971-8C1B-5191CBAD81F8.jpeg",
+                images: ["Messenger_creation_FDF67350-7954-4971-8C1B-5191CBAD81F8.jpeg"],
                 emergency: false,
                 hasKhatian: false
             },
@@ -1075,7 +1077,7 @@
                 road: "১০ ফিট অভ্যন্তরীণ সুন্দর রাস্তা সুবিধা ও ইউটিলিটি কানেকশন।",
                 note: "💡 [গ্রাহকদের অবগতির জন্য: এই জোনের ৫, ৬ এবং ৭ নম্বর প্রপার্টিগুলো একই মূল মালিকের নিজস্ব সম্পত্তি, তাই সবগুলোতে একই কন্টাক্ট নাম্বার দেওয়া হয়েছে]। একই মালিকের পূর্ববর্তী ফলের বাগান সংলগ্ন ১ম প্লটটি থেকে ঠিক ২ প্লট পেছনে এই সুন্দর６শতাংশের ২য় প্লটটি অবস্থিত। বাউন্ডারি দেয়াল ঘেরা, পানি ও বিদ্যুৎ সুবিধাযুক্ত রেডি প্রপার্টি। অযথা ব্রোকার বা মিডিয়া ছাড়া সরাসরি ওনারের সাথে কথা বলে ক্লিয়ার ডিল করতে পারবেন। দাম ৬ লাখ টাকা একদম ফিক্সড।",
                 phone: "01849513215",
-                img: "GIjGFVfbXcpjYWxWSwedHidrt0X.jpg",
+                images: ["Messenger_creation_5249D411-7357-4382-B92D-947C22FC4DEB.jpeg"],
                 emergency: false,
                 hasKhatian: false
             },
@@ -1089,7 +1091,7 @@
                 road: "চমৎকার ও সচল গ্রামীণ সংযোগ সড়ক ব্যবস্থা রয়েছে।",
                 note: "ফরিদ্গঞ্জ উপজেলার পাইকপাড়া উত্তর ইউনিয়নের পাইকপাড়া গ্রামে এই বিশাল আকৃতির প্রপার্টিটি অবস্থিত। মোট ১ একর ২৫ শতাংশ বা ১২৫ শতাংশের এই বড় প্লটটি কৃষি, খামার, বৃক্ষরোপণ কিংবা দীর্ঘমেয়াদী যেকোনো বড় প্রজেক্ট বা আবাসন আইডিয়ার জন্য অত্যন্ত লাভজনক একটি ডিল। সরাসরি প্রকৃত ক্রেতাগণ কোনো প্রকার মিডিয়া ছাড়াই সরাসরি মালিকের সাথে কথা বলে আলোচনা সাপেক্ষ মূল্যে এটি ক্রয় করতে পারবেন।",
                 phone: "01849513215",
-                img: "GHPgQKqVwNVWwmfUxfdyIfKYu0Y.jpg",
+                images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=604"],
                 emergency: false,
                 hasKhatian: false
             }
@@ -1115,13 +1117,14 @@
                 
                 const emergencyTag = item.emergency ? `<span class="tag-emergency">Emergency Sell</span>` : '';
                 const displayTitle = item.title.length > 72 ? item.title.substring(0, 70) + '...' : item.title;
+                const coverImage = item.images[0]; // Cards display the first image
                 
                 const cardHTML = `
                     <div class="property-card" data-location="${item.zone}">
                         <div class="property-thumb">
                             <span class="tag-direct">সরাসরি মালিকানা</span>
                             ${emergencyTag}
-                            <img src="${item.img}" alt="Asset Thumbnail">
+                            <img src="${coverImage}" alt="Asset Thumbnail">
                         </div>
                         <div class="property-details">
                             <div class="property-value">${item.price}</div>
@@ -1174,7 +1177,7 @@
             }
         }
 
-        // Details Generator Engine with Dynamic Table Integration
+        // Details Generator Engine with Dynamic Table and Multi-Image Layout Support
         function showPropertyDetails(id) {
             const asset = propertyDatabase[id];
             if (!asset) return;
@@ -1205,10 +1208,15 @@
                 `;
             }
 
+            // Loop and render all attached images for full asset view
+            const galleryHTML = asset.images.map(imageSrc => `
+                <img src="${imageSrc}" class="detail-gallery-item" alt="Asset Image Detail">
+            `).join('');
+
             const container = document.getElementById('dynamicDetailsContainer');
             container.innerHTML = `
-                <div class="detail-gallery">
-                    <img src="${asset.img}" alt="Asset Image">
+                <div class="detail-gallery-container">
+                    ${galleryHTML}
                 </div>
                 <div class="detail-info-box">
                     <div class="detail-header-row">
